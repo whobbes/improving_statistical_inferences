@@ -10,6 +10,9 @@ library(ggplot2)
 if(!require(Rcpp)){install.packages('Rcpp')}
 library(Rcpp)
 
+# Set seed for random generator
+set.seed(1000)
+
 n=20 #set sample size
 nSims<-100000 #set number of simulations
 
@@ -58,5 +61,5 @@ cat((100*(1-(length(CIU_sim)/nSims+length(CIL_sim)/nSims))),"% of the 95% confid
 mean_sim<-mean_sim[mean_sim>CIL&mean_sim<CIU]
 cat("The capture percentage for the plotted study, or the % of values within the observed confidence interval from",CIL,"to",CIU,"is:",100*length(mean_sim)/nSims,"%")
 
-#© Daniel Lakens, 2016. 
+#? Daniel Lakens, 2016. 
 # This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. https://creativecommons.org/licenses/by-nc-sa/4.0/
