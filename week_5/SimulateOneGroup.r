@@ -3,7 +3,7 @@ if(!require(ggplot2)){install.packages('ggplot2')}
 library(ggplot2)
 
 #Simulate one group
-n=10 #set sample size
+n=1000 #set sample size
 x<-rnorm(n = n, mean = 100, sd = 15) #create sample from normal distribution
 
 
@@ -18,5 +18,5 @@ ggplot(as.data.frame(x), aes(x))  +
   coord_cartesian(xlim=c(50,150)) + scale_x_continuous(breaks=c(50,60,70,80,90,100,110,120,130,140,150)) +
   annotate("text", x = mean(x), y = 0.02, label = paste("Mean = ",round(mean(x)),"\n","SD = ",round(sd(x)),sep=""), size=8)
 
-#© Daniel Lakens, 2016. 
+#? Daniel Lakens, 2016. 
 # This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. https://creativecommons.org/licenses/by-nc-sa/4.0/
