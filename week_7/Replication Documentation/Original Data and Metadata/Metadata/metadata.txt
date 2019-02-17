@@ -1,0 +1,21 @@
+1) A citation to the website from which you downloaded the data.
+
+I used the imdb.com website.
+
+2) The data you downloaded, and a description of how others can access this data
+(e.g., the search terms you used).
+
+I searched for "Brad Pitt" and then selected actor and randomly chose 28 movies out of the 80 credits.
+I searched for "Nicholas Cage" and then selected actor and randomly chose 28 movies out of the 80 credits.
+
+3) Some information that will allow readers to understand the original data. This
+information should be similar to a ‘codebook’. In our simple datafile, this will
+be straightforward, but in larger datasets, this requires careful work.
+
+The CSV provided file are namde after the actor in question.
+They contain a list of movie title (simplified when long) and related IMDB ratings.
+
+4) If you use existing datasets, a DOI (Digital Object Identifier) assigned to the
+dataset, if available. This is not needed for our project.
+
+I did not use and existing dataset.

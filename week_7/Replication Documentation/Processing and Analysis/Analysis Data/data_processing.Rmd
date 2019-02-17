@@ -1,0 +1,16 @@
+---
+title: "Brad Pitt vs. Nicholas Cage"
+output: html_notebook
+---
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook used to process the data. The aim here is compare IMBDB ratings of movies with Brad Pitt or Nicholas cage to see if the former rate better than the latter.
+
+## Step 1: Import Data
+```{r}
+brad_pitt <- read.csv("../Importable Data/brad_pitt.csv")
+nicholas_cage <- read.csv("../Importable Data/nicholas_cage.csv")
+```
+
+## Step 2: Run t-test
+
+
+## Step 3: Interpretation
