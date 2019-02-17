@@ -1,0 +1,31 @@
+---
+title: "Brad Pitt vs. Nicholas Cage"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+The aim here is compare IMDB ratings of movies with Brad Pitt or Nicholas cage to see if the former rate better than the latter. We are going for this to first import the data, run a one tail t-test, interpret the results and draw a conclusion.
+
+## Step 1: Import Data
+```{r}
+brad_pitt <- read.csv("../Importable Data/brad_pitt.csv")
+nicholas_cage <- read.csv("../Importable Data/nicholas_cage.csv")
+```
+
+## Step 2: Run t-test
+```{r}
+print(t.test(brad_pitt$score, nicholas_cage$score, alternative = 'greater'))
+```
+
+## Step 3: Interpretation
+We have a significant t-test result as p < 0.05 (p= 7.087e-05).
+The mean difference is 7.028571 - 5.792857 = 1.235714
+From week 4 document Calculating_Effect_Size.xlsx(included here as well) we can compute the effect size.
+With t-value of 4.0964, n1=28 and n2=28 we get Hedge's g of 1.079532547.
+This means there is a big effect size which is in line with the prediction we made earlier.
+We have a power of 99% here.
+
+## Step 4: Conclusion
+We can conclude that based on the data observed that people rate movies with Brad Pitt with a higher score that movies with Nicholas Cage.

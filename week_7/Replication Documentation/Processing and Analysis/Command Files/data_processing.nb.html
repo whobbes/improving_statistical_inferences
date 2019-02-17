@@ -1762,27 +1762,52 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook used to process the data. The aim here is compare IMBDB ratings of movies with Brad Pitt or Nicholas cage to see if the former rate better than the latter.</p>
+<p>The aim here is compare IMDB ratings of movies with Brad Pitt or Nicholas cage to see if the former rate better than the latter. We are going for this to first import the data, run a one tail t-test, interpret the results and draw a conclusion.</p>
 <div id="step-1-import-data" class="section level2">
 <h2>Step 1: Import Data</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYnJhZF9waXR0IDwtIHJlYWQuY3N2KFwiLi4vSW1wb3J0YWJsZSBEYXRhL2JyYWRfcGl0dC5jc3ZcIilcbm5pY2hvbGFzX2NhZ2UgPC0gcmVhZC5jc3YoXCIuLi9JbXBvcnRhYmxlIERhdGEvYnJhZF9waXR0LmNzdlwiKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYnJhZF9waXR0IDwtIHJlYWQuY3N2KFwiLi4vSW1wb3J0YWJsZSBEYXRhL2JyYWRfcGl0dC5jc3ZcIilcbm5pY2hvbGFzX2NhZ2UgPC0gcmVhZC5jc3YoXCIuLi9JbXBvcnRhYmxlIERhdGEvbmljaG9sYXNfY2FnZS5jc3ZcIilcbmBgYCJ9 -->
 <pre class="r"><code>brad_pitt &lt;- read.csv(&quot;../Importable Data/brad_pitt.csv&quot;)
-nicholas_cage &lt;- read.csv(&quot;../Importable Data/brad_pitt.csv&quot;)</code></pre>
+nicholas_cage &lt;- read.csv(&quot;../Importable Data/nicholas_cage.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="step-2-run-t-test" class="section level2">
 <h2>Step 2: Run t-test</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQodC50ZXN0KGJyYWRfcGl0dCRzY29yZSwgbmljaG9sYXNfY2FnZSRzY29yZSwgYWx0ZXJuYXRpdmUgPSAnZ3JlYXRlcicpKVxuYGBgIn0= -->
+<pre class="r"><code>print(t.test(brad_pitt$score, nicholas_cage$score, alternative = &#39;greater&#39;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5cdFdlbGNoIFR3byBTYW1wbGUgdC10ZXN0XG5cbmRhdGE6ICBicmFkX3BpdHQkc2NvcmUgYW5kIG5pY2hvbGFzX2NhZ2Ukc2NvcmVcbnQgPSA0LjA5NjQsIGRmID0gNTMuOTU4LCBwLXZhbHVlID0gNy4wODdlLTA1XG5hbHRlcm5hdGl2ZSBoeXBvdGhlc2lzOiB0cnVlIGRpZmZlcmVuY2UgaW4gbWVhbnMgaXMgZ3JlYXRlciB0aGFuIDBcbjk1IHBlcmNlbnQgY29uZmlkZW5jZSBpbnRlcnZhbDpcbiAwLjczMDg1NzQgICAgICAgSW5mXG5zYW1wbGUgZXN0aW1hdGVzOlxubWVhbiBvZiB4IG1lYW4gb2YgeSBcbiA3LjAyODU3MSAgNS43OTI4NTcgXG4ifQ== -->
+<pre><code>
+    Welch Two Sample t-test
+
+data:  brad_pitt$score and nicholas_cage$score
+t = 4.0964, df = 53.958, p-value = 7.087e-05
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.7308574       Inf
+sample estimates:
+mean of x mean of y 
+ 7.028571  5.792857 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
 <div id="step-3-interpretation" class="section level2">
 <h2>Step 3: Interpretation</h2>
+<p>We have a significant t-test result as p &lt; 0.05 (p= 7.087e-05). The mean difference is 7.028571 - 5.792857 = 1.235714 From week 4 document Calculating_Effect_Size.xlsx(included here as well) we can compute the effect size. With t-value of 4.0964, n1=28 and n2=28 we get Hedge’s g of 1.079532547. This means there is a big effect size which is in line with the prediction we made earlier. We have a power of 99% here.</p>
+</div>
+<div id="step-4-conclusion" class="section level2">
+<h2>Step 4: Conclusion</h2>
+<p>We can conclude that based on the data observed that people rate movies with Brad Pitt with a higher score that movies with Nicholas Cage.</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQnJhZCBQaXR0IHZzLiBOaWNob2xhcyBDYWdlIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tClRoaXMgaXMgYW4gW1IgTWFya2Rvd25dKGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20pIE5vdGVib29rIHVzZWQgdG8gcHJvY2VzcyB0aGUgZGF0YS4gVGhlIGFpbSBoZXJlIGlzIGNvbXBhcmUgSU1CREIgcmF0aW5ncyBvZiBtb3ZpZXMgd2l0aCBCcmFkIFBpdHQgb3IgTmljaG9sYXMgY2FnZSB0byBzZWUgaWYgdGhlIGZvcm1lciByYXRlIGJldHRlciB0aGFuIHRoZSBsYXR0ZXIuCgojIyBTdGVwIDE6IEltcG9ydCBEYXRhCmBgYHtyfQpicmFkX3BpdHQgPC0gcmVhZC5jc3YoIi4uL0ltcG9ydGFibGUgRGF0YS9icmFkX3BpdHQuY3N2IikKbmljaG9sYXNfY2FnZSA8LSByZWFkLmNzdigiLi4vSW1wb3J0YWJsZSBEYXRhL25pY2hvbGFzX2NhZ2UuY3N2IikKYGBgCgojIyBTdGVwIDI6IFJ1biB0LXRlc3QKCgojIyBTdGVwIDM6IEludGVycHJldGF0aW9u</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQnJhZCBQaXR0IHZzLiBOaWNob2xhcyBDYWdlIgpvdXRwdXQ6CiAgaHRtbF9ub3RlYm9vazogZGVmYXVsdAogIGh0bWxfZG9jdW1lbnQ6CiAgICBkZl9wcmludDogcGFnZWQKICBwZGZfZG9jdW1lbnQ6IGRlZmF1bHQKLS0tClRoZSBhaW0gaGVyZSBpcyBjb21wYXJlIElNREIgcmF0aW5ncyBvZiBtb3ZpZXMgd2l0aCBCcmFkIFBpdHQgb3IgTmljaG9sYXMgY2FnZSB0byBzZWUgaWYgdGhlIGZvcm1lciByYXRlIGJldHRlciB0aGFuIHRoZSBsYXR0ZXIuIFdlIGFyZSBnb2luZyBmb3IgdGhpcyB0byBmaXJzdCBpbXBvcnQgdGhlIGRhdGEsIHJ1biBhIG9uZSB0YWlsIHQtdGVzdCwgaW50ZXJwcmV0IHRoZSByZXN1bHRzIGFuZCBkcmF3IGEgY29uY2x1c2lvbi4KCiMjIFN0ZXAgMTogSW1wb3J0IERhdGEKYGBge3J9CmJyYWRfcGl0dCA8LSByZWFkLmNzdigiLi4vSW1wb3J0YWJsZSBEYXRhL2JyYWRfcGl0dC5jc3YiKQpuaWNob2xhc19jYWdlIDwtIHJlYWQuY3N2KCIuLi9JbXBvcnRhYmxlIERhdGEvbmljaG9sYXNfY2FnZS5jc3YiKQpgYGAKCiMjIFN0ZXAgMjogUnVuIHQtdGVzdApgYGB7cn0KcHJpbnQodC50ZXN0KGJyYWRfcGl0dCRzY29yZSwgbmljaG9sYXNfY2FnZSRzY29yZSwgYWx0ZXJuYXRpdmUgPSAnZ3JlYXRlcicpKQpgYGAKCiMjIFN0ZXAgMzogSW50ZXJwcmV0YXRpb24KV2UgaGF2ZSBhIHNpZ25pZmljYW50IHQtdGVzdCByZXN1bHQgYXMgcCA8IDAuMDUgKHA9IDcuMDg3ZS0wNSkuClRoZSBtZWFuIGRpZmZlcmVuY2UgaXMgNy4wMjg1NzEgLSA1Ljc5Mjg1NyA9IDEuMjM1NzE0CkZyb20gd2VlayA0IGRvY3VtZW50IENhbGN1bGF0aW5nX0VmZmVjdF9TaXplLnhsc3goaW5jbHVkZWQgaGVyZSBhcyB3ZWxsKSB3ZSBjYW4gY29tcHV0ZSB0aGUgZWZmZWN0IHNpemUuCldpdGggdC12YWx1ZSBvZiA0LjA5NjQsIG4xPTI4IGFuZCBuMj0yOCB3ZSBnZXQgSGVkZ2UncyBnIG9mIDEuMDc5NTMyNTQ3LgpUaGlzIG1lYW5zIHRoZXJlIGlzIGEgYmlnIGVmZmVjdCBzaXplIHdoaWNoIGlzIGluIGxpbmUgd2l0aCB0aGUgcHJlZGljdGlvbiB3ZSBtYWRlIGVhcmxpZXIuCldlIGhhdmUgYSBwb3dlciBvZiA5OSUgaGVyZS4KCiMjIFN0ZXAgNDogQ29uY2x1c2lvbgpXZSBjYW4gY29uY2x1ZGUgdGhhdCBiYXNlZCBvbiB0aGUgZGF0YSBvYnNlcnZlZCB0aGF0IHBlb3BsZSByYXRlIG1vdmllcyB3aXRoIEJyYWQgUGl0dCB3aXRoIGEgaGlnaGVyIHNjb3JlIHRoYXQgbW92aWVzIHdpdGggTmljaG9sYXMgQ2FnZS4=</div>
 
 
 
